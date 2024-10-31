@@ -19,7 +19,7 @@ const DEMO_DATA:DemoDataType = {
   features: {
     question: "Which features would make this voting widget better for your product?",
     layout: "grid" as const,
-    columns: 4,
+    columns: 2,
     items: [
       { 
         id: '1', 
