@@ -1,36 +1,51 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Feature Voting Platform
 
-## Getting Started
+A beautiful, lightning-fast feature voting widget that helps product teams validate ideas before writing code. Built with Next.js and modern web technologies.
 
-First, run the development server:
+![Feature Voting Platform](preview-image.png)
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+## ✨ Key Features
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+- 🚀 **Lightning Fast Setup** - Drop-in widget that takes less than 5 minutes to integrate
+- 📊 **Rich Analytics** - Track engagement and identify trending feature requests
+- 🎯 **Multiple Layouts** - Supports masonry, list, and grid layouts
+- 🎨 **Delightful UX** - Smooth animations and confetti celebrations
+- 📱 **Fully Responsive** - Works perfectly on all devices
+- 🔄 **Real-time Updates** - Instant vote synchronization
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## 🚀 Getting Started
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+1. Clone the repository
+2. Install dependencies:
+    ```bash
+    npm install
+    ```
+3. Run the development server:
+    ```bash
+    npm run dev
+    ```
+4. Open http://localhost:3000
 
-## Learn More
+## 💡 Usage Examples
 
-To learn more about Next.js, take a look at the following resources:
+    <FeatureVoting features={features} layout="masonry" allowMultiple={true} 
+      showConfetti={true} onVote={handleVote}  columns={4} />
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+<hr/>
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+## 📦 Latest Release (v1.2.0)
+- ✨ Added masonry layout support
+- 📊 New analytics dashboard
+- 🐛 Fixed mobile responsiveness issues
 
-## Deploy on Vercel
+## 💳 Pricing
+Free Tier: Basic feature voting for individual projects
+Pro: Advanced features and analytics
+Enterprise: Custom solutions for large teams
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+## 📄 License
+This project is licensed under a custom non-commercial license. Commercial use requires purchasing a license - see the [LICENSE.md] file for details.
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+## 🤝 Support
+For support inquiries, please open an issue or contact our support team.
+
