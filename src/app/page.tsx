@@ -5,30 +5,126 @@ import PricingSection from '@/components/ui/PricingSection';
 import { type Feature, VoteType } from '@/app/types';
 import { ArrowRight, Sparkles, BarChart3, Zap, Calendar } from 'lucide-react';
 import Image from 'next/image';
+import { LayoutType } from '@/app/types';
 
-const DEMO_DATA = {
-  features: [
-    { id: '1', title: "dark mode support", votes: { up: 245, down: 12 }, userVote: null },
-    { id: '2', title: "custom vote button styles", votes: { up: 189, down: 34 }, userVote: null },
-    { id: '3', title: "slack/discord notifications", votes: { up: 156, down: 45 }, userVote: null },
-    { id: '4', title: "embed widget customization", votes: { up: 267, down: 8 }, userVote: null },
-  ],
-  roadmap: [
-    { id: '1', title: "analytics dashboard v2", votes: { up: 423, down: 21 }, userVote: null },
-    { id: '2', title: "mobile app support", votes: { up: 356, down: 43 }, userVote: null },
-    { id: '3', title: "webhook integrations", votes: { up: 289, down: 67 }, userVote: null },
-    { id: '4', title: "advanced user roles", votes: { up: 445, down: 12 }, userVote: null },
-  ],
-  feedback: [
-    { id: '1', title: "more vote animation options", votes: { up: 89, down: 2 }, userVote: null },
-    { id: '2', title: "bulk feature management", votes: { up: 67, down: 5 }, userVote: null },
-    { id: '3', title: "better mobile responsive", votes: { up: 234, down: 23 }, userVote: null },
-    { id: '4', title: "category sorting/filtering", votes: { up: 178, down: 15 }, userVote: null },
-  ]
+type DemoDataType = {
+  [key in 'features' | 'roadmap' | 'feedback']: {
+    question: string;
+    layout: LayoutType;
+    columns: 1 | 2 | 3 | 4;
+    items: Feature[];
+  }
+};
+const DEMO_DATA:DemoDataType = {
+  features: {
+    question: "Which features would make this voting widget better for your product?",
+    layout: "grid" as const,
+    columns: 4,
+    items: [
+      { 
+        id: '1', 
+        title: "AI-powered feature clustering", 
+        description: "Automatically group similar feature requests to prevent duplicates and show true demand",
+        votes: { up: 245, down: 12 }, 
+        userVote: null 
+      },
+      { 
+        id: '2', 
+        title: "Custom voting criteria", 
+        description: "Add your own voting options beyond just upvote/downvote (e.g., priority, effort, impact)",
+        votes: { up: 189, down: 34 }, 
+        userVote: null 
+      },
+      { 
+        id: '3', 
+        title: "Rich media in feature requests", 
+        description: "Allow users to add screenshots, videos, and mockups to better explain their needs",
+        votes: { up: 156, down: 45 }, 
+        userVote: null 
+      },
+      { 
+        id: '4', 
+        title: "Private feedback boards", 
+        description: "Create invite-only boards for gathering feedback from specific customer segments",
+        votes: { up: 267, down: 8 }, 
+        userVote: null 
+      },
+    ]
+  },
+  roadmap: {
+    question: "Which upcoming features should we prioritize?",
+    layout: "masonry" as const,
+    columns: 4,
+    items: [
+      { 
+        id: '1', 
+        title: "Advanced analytics dashboard", 
+        description: "Track feature popularity trends, user engagement patterns, and voting demographics",
+        votes: { up: 423, down: 21 }, 
+        userVote: null 
+      },
+      { 
+        id: '2', 
+        title: "Slack/Discord integration", 
+        description: "Get real-time notifications when users vote or comment on features",
+        votes: { up: 356, down: 43 }, 
+        userVote: null 
+      },
+      { 
+        id: '3', 
+        title: "Public API access", 
+        description: "Build custom integrations and embed the voting widget anywhere",
+        votes: { up: 289, down: 67 }, 
+        userVote: null 
+      },
+      { 
+        id: '4', 
+        title: "Custom branding options", 
+        description: "Match the widget's look and feel to your product's brand identity",
+        votes: { up: 445, down: 12 }, 
+        userVote: null 
+      },
+    ]
+  },
+  feedback: {
+    question: "What would make you choose this over other feedback tools?",
+    layout: "list" as const,
+    columns: 1,
+    items: [
+      { 
+        id: '1', 
+        title: "One-click installation", 
+        description: "Install with a single line of code, no complex setup required",
+        votes: { up: 89, down: 2 }, 
+        userVote: null 
+      },
+      { 
+        id: '2', 
+        title: "Free self-hosted option", 
+        description: "Ability to run the feature voting system on your own infrastructure",
+        votes: { up: 234, down: 23 }, 
+        userVote: null 
+      },
+      { 
+        id: '3', 
+        title: "Built-in user verification", 
+        description: "Prevent spam by requiring email verification or social login",
+        votes: { up: 178, down: 15 }, 
+        userVote: null 
+      },
+      { 
+        id: '4', 
+        title: "Multiple board layouts", 
+        description: "Switch between grid, list, and kanban views to match your workflow",
+        votes: { up: 156, down: 5 }, 
+        userVote: null 
+      },
+    ]
+  }
 };
 const CHANGELOG = [
   {
-    date: '2024-02-15',
+    date: '2024-10-31',
     version: 'v1.2.0',
     changes: [
       { type: 'feature', text: 'Added masonry layout support' },
@@ -37,7 +133,7 @@ const CHANGELOG = [
     ]
   },
   {
-    date: '2024-01-30',
+    date: '2024-10-30',
     version: 'v1.1.0',
     changes: [
       { type: 'feature', text: 'Introduced multiple voting mode' },
@@ -46,7 +142,7 @@ const CHANGELOG = [
     ]
   },
   {
-    date: '2024-01-15',
+    date: '2024-10-30',
     version: 'v1.0.0',
     changes: [
       { type: 'feature', text: 'Initial release' },
@@ -58,15 +154,8 @@ const CHANGELOG = [
 
 export default function Home() {
 const [demoType, setDemoType] = useState<'features' | 'roadmap' | 'feedback'>('features');
-const [features, setFeatures] = useState<Feature[]>(DEMO_DATA[demoType]);
-
-const handleDemoChange = (type: 'features' | 'roadmap' | 'feedback') => {
-  console.log('handleDemoChange called with:', type);
-  console.log('Current features:', DEMO_DATA[type]);
-  setDemoType(type);
-  setFeatures(DEMO_DATA[type]);
-};
-  const handleVote = (featureId: string, voteType: VoteType) => {
+const [features, setFeatures] = useState<Feature[]>(DEMO_DATA[demoType].items);
+const handleVote = (featureId: string, voteType: VoteType) => {
     setFeatures(prev => prev.map(feature => {
       if (feature.id !== featureId) return feature;
       const newVotes = { ...feature.votes };
@@ -122,36 +211,42 @@ const handleDemoChange = (type: 'features' | 'roadmap' | 'feedback') => {
         </div>
 
         {/* Demo Section with Type Selector */}
-        <div className="mb-16">
-          <div className="text-center mb-8">
-            <h2 className="text-2xl font-bold mb-4">This is actually it. Try it yourself!</h2>
-            <div className="inline-flex rounded-lg border border-gray-200 p-1 mb-4">
-              {(['features', 'roadmap', 'feedback'] as const).map((type) => (
-                <button
-                  key={type}
-                  onClick={() => handleDemoChange(type)}
-                  className={`px-4 py-2 rounded-md text-sm font-medium transition
-                    ${demoType === type 
-                      ? 'bg-blue-100 text-blue-700' 
-                      : 'text-gray-600 hover:bg-gray-50'
-                    }`}
-                >
-                  {type.charAt(0).toUpperCase() + type.slice(1)}
-                </button>
-              ))}
-            </div>
-          </div>
-          
-            <FeatureVoting
-              features={features}
-              layout="masonry"
-              allowMultiple={true}
-              showConfetti={true}
-              onVote={handleVote}
-              columns={4}
-            />
-        </div>
+ {/* Demo Section */}
+ <div className="mb-16">
+    <div className="text-center mb-8">
+      <h2 className="text-xl font-bold  mb-8">This is actually it. Try it yourself! (you can have multiple or single selection feedbacks! demo shows multiple only now.)</h2>
+      <div className="inline-flex rounded-lg border border-gray-200 p-1 mb-4">
+        {(['features', 'roadmap', 'feedback'] as const).map((type) => (
+          <button
+            key={type}
+            onClick={() => {
+              setDemoType(type);
+              setFeatures(DEMO_DATA[type].items);
+            }}
+            className={`px-4 py-2 rounded-md text-sm font-medium transition
+              ${demoType === type 
+                ? 'bg-blue-100 text-blue-700' 
+                : 'text-gray-600 hover:bg-gray-50'
+              }`}
+          >
+            {type.charAt(0).toUpperCase() + type.slice(1)}
+          </button>
+        ))}
+      </div>
+      <p className="text-2xl text-gray-800 mb-6">
+        {DEMO_DATA[demoType].question}
+      </p>
+    </div>
 
+    <FeatureVoting
+      features={features}
+      layout={DEMO_DATA[demoType].layout}
+      columns={DEMO_DATA[demoType].columns}
+      allowMultiple={true}
+      showConfetti={true}
+      onVote={handleVote}
+    />
+  </div>
         {/* Key Features */}
         <div className="grid md:grid-cols-3 gap-8 mb-16">
           <div className="p-6 rounded-lg bg-white border border-gray-100">
